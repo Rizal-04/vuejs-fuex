@@ -19,5 +19,19 @@ export default {
         }
       });
     },
+    POST_DATA({ commit }, { reqUrl, payload }) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const resp = await axios({
+            url: `${endPoint}` + `${reqUrl}`,
+            method: "POST",
+            data: payload,
+          });
+          resolve(resp);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
   },
 };

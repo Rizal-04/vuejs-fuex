@@ -3,7 +3,14 @@ export default {
   data() {
     return {
       property: {
+        checkingUser: {
+          isLoading: false,
+        },
+        register: {
+          isLoading: false,
+        },
         modal: {
+          showModalAlreadyExist: false,
           showModalOtp: false,
         },
       },
@@ -14,9 +21,11 @@ export default {
         checkingUser: {
           email: "",
         },
-        firstName: "",
-        lastName: "",
-        email: "",
+        register: {
+          firstName: "",
+          lastName: "",
+          email: "",
+        },
       },
     };
   },
@@ -25,17 +34,66 @@ export default {
       this.$router.push("login");
     },
     async confirm() {
-      const headers = { email: this.dataForm.checkingUser.email };
-      try {
-        const resp = await this.$store.dispatch({
-          type: "GET_DATA",
-          reqUrl: "checking-avalibility-user",
-          headers: headers,
-        });
-        // .then((resp) => (this.dataForm.checkingUser.email = resp.data.email));
-        console.log(resp);
-      } catch (error) {
-        console.error(error);
+      if (this.dataForm.checkingUser.email === "") {
+        return;
+      } else {
+        this.property.checkingUser.isLoading = true;
+        const headers = { email: this.dataForm.checkingUser.email };
+        try {
+          const resp = await this.$store.dispatch({
+            type: "GET_DATA",
+            reqUrl: "checking-avalibility-user",
+            headers: headers,
+          });
+          console.log(resp);
+          if (resp.data.message === "SUCCESS") {
+            this.dataForm.checkingUser.email = "";
+            this.property.checkingUser.isLoading = false;
+            this.property.modal.showModalAlreadyExist = true;
+          } else {
+            this.dataForm.checkingUser.email = "";
+            this.property.checkingUser.isLoading = false;
+            this.property.modal.showModalOtp = true;
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    },
+    async handleRegister() {
+      if (
+        this.dataForm.register.firstName === "" ||
+        this.dataForm.register.lastName === "" ||
+        this.dataForm.register.email === ""
+      ) {
+        return;
+      } else {
+        this.property.register.isLoading = true;
+        const payload = {
+          username: this.dataForm.register.firstName,
+          fullName: this.dataForm.register.lastName,
+          email: this.dataForm.register.email,
+          mobilePhoneNumber: "089504731540",
+        };
+        try {
+          const resp = await this.$store.dispatch({
+            type: "POST_DATA",
+            reqUrl: "register",
+            data: payload,
+          });
+          if (resp.data.message === "SUCCESS") {
+            this.$buefy.toast.open({
+              duration: 2000,
+              message: `Register sukses`,
+              type: "is-success",
+            });
+          } else {
+            console.error("ERORR");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+        this.property.register.isLoading = false;
       }
     },
   },

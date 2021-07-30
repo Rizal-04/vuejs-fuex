@@ -14,7 +14,12 @@
             <div class="card-content">
               <div class="flex flex-col">
                 <b-field>
-                  <b-input type="email" v-model="dataForm.email"> </b-input>
+                  <b-input
+                    type="email"
+                    placeholder="Email"
+                    v-model="dataForm.email"
+                  >
+                  </b-input>
                 </b-field>
                 <div class="buttons">
                   <b-button class="rounded-full" type="is-danger" expanded
