@@ -1,4 +1,4 @@
-import Axios from "axios";
+// import Axios from "axios";
 
 export default {
   name: "Register",
@@ -17,7 +17,7 @@ export default {
         },
       },
       identifier: {
-        isEmail: false,
+        isEmail: true,
       },
       dataForm: {
         checkingUser: {
