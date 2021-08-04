@@ -19,13 +19,14 @@ export default {
         }
       });
     },
-    POST_DATA({ commit }, { reqUrl, payload }) {
+    POST_DATA({ commit }, { reqUrl, payload, params }) {
       return new Promise(async (resolve, reject) => {
         try {
           const resp = await axios({
             url: `${endPoint}` + `${reqUrl}`,
             method: "POST",
             data: payload,
+            params: params,
           });
           resolve(resp);
         } catch (error) {

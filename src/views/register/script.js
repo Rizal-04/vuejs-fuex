@@ -1,3 +1,5 @@
+import Axios from "axios";
+
 export default {
   name: "Register",
   data() {
@@ -15,7 +17,7 @@ export default {
         },
       },
       identifier: {
-        isEmail: true,
+        isEmail: false,
       },
       dataForm: {
         checkingUser: {
@@ -73,14 +75,24 @@ export default {
           username: this.dataForm.register.firstName,
           fullName: this.dataForm.register.lastName,
           email: this.dataForm.register.email,
-          mobilePhoneNumber: "089504731540",
+          mobilePhoneNumber: "089204731540",
         };
+
+        // hardcord
+        // const resp = await Axios({
+        //   url: `https://fuex-service.herokuapp.com/register`,
+        //   method: "POST",
+        //   data: payload,
+        // });
+        // console.log(resp);
+
         try {
           const resp = await this.$store.dispatch({
             type: "POST_DATA",
             reqUrl: "register",
-            data: payload,
+            payload: payload,
           });
+          console.log(resp);
           if (resp.data.message === "SUCCESS") {
             this.$buefy.toast.open({
               duration: 2000,
@@ -88,7 +100,11 @@ export default {
               type: "is-success",
             });
           } else {
-            console.error("ERORR");
+            this.$buefy.toast.open({
+              duration: 2000,
+              message: `Register gagal`,
+              type: "is-danger",
+            });
           }
         } catch (error) {
           console.log(error);
