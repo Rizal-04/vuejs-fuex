@@ -5,6 +5,9 @@ export default {
   data() {
     return {
       property: {
+        alreadyExist: {
+          isLoading: false,
+        },
         checkingUser: {
           isLoading: false,
         },
@@ -20,8 +23,9 @@ export default {
         isEmail: true,
       },
       dataForm: {
+        codeOtp: "",
         checkingUser: {
-          email: "",
+          emailUser: "",
         },
         register: {
           firstName: "",
@@ -36,11 +40,12 @@ export default {
       this.$router.push("login");
     },
     async confirm() {
-      if (this.dataForm.checkingUser.email === "") {
+      const timeout = 1500;
+      if (this.dataForm.checkingUser.emailUser === "") {
         return;
       } else {
         this.property.checkingUser.isLoading = true;
-        const headers = { email: this.dataForm.checkingUser.email };
+        const headers = { email: this.dataForm.checkingUser.emailUser };
         try {
           const resp = await this.$store.dispatch({
             type: "GET_DATA",
@@ -49,13 +54,17 @@ export default {
           });
           console.log(resp);
           if (resp.data.message === "SUCCESS") {
-            this.dataForm.checkingUser.email = "";
-            this.property.checkingUser.isLoading = false;
-            this.property.modal.showModalAlreadyExist = true;
+            setTimeout(() => {
+              this.dataForm.checkingUser.emailUser = "";
+              this.property.checkingUser.isLoading = false;
+              this.property.modal.showModalAlreadyExist = true;
+            }, timeout);
           } else {
-            this.dataForm.checkingUser.email = "";
-            this.property.checkingUser.isLoading = false;
-            this.property.modal.showModalOtp = true;
+            setTimeout(() => {
+              this.dataForm.checkingUser.emailUser = "";
+              this.property.checkingUser.isLoading = false;
+              this.property.modal.showModalOtp = true;
+            }, timeout);
           }
         } catch (error) {
           console.error(error);
@@ -95,14 +104,14 @@ export default {
           console.log(resp);
           if (resp.data.message === "SUCCESS") {
             this.$buefy.toast.open({
-              duration: 2000,
-              message: `Register sukses`,
+              duration: 1500,
+              message: resp.data.message,
               type: "is-success",
             });
           } else {
             this.$buefy.toast.open({
-              duration: 2000,
-              message: `Register gagal`,
+              duration: 1500,
+              message: resp.data.content,
               type: "is-danger",
             });
           }
@@ -111,6 +120,16 @@ export default {
         }
         this.property.register.isLoading = false;
       }
+    },
+    closeModalAlreadyExist() {
+      this.property.alreadyExist.isLoading = true;
+      this.property.modal.showModalAlreadyExist = false;
+      this.property.alreadyExist.isLoading = false;
+    },
+    validationRegister() {
+      this.property.modal.showModalOtp = false;
+      this.dataForm.codeOtp = false;
+      this.identifier.isEmail = false;
     },
   },
 };

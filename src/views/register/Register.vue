@@ -20,7 +20,7 @@
                   <b-input
                     type="email"
                     placeholder="Email"
-                    v-model="dataForm.checkingUser.email"
+                    v-model="dataForm.checkingUser.emailUser"
                   >
                   </b-input>
                 </b-field>
@@ -51,7 +51,11 @@
                 </div>
               </div>
               <div class="buttons">
-                <b-button class="rounded-full" type="is-danger" expanded
+                <b-button
+                  class="rounded-full"
+                  @click="closeModalAlreadyExist"
+                  type="is-danger"
+                  expanded
                   >Oke</b-button
                 >
               </div>
@@ -65,12 +69,16 @@
               <div class="flex flex-col jutify-center items-center">
                 <div class=" mb-4">
                   <b-field>
-                    <b-input type="text"></b-input>
+                    <b-input type="text" v-model="dataForm.codeOtp"></b-input>
                   </b-field>
                 </div>
               </div>
               <div class="buttons">
-                <b-button class="rounded-full" type="is-danger" expanded
+                <b-button
+                  class="rounded-full"
+                  @click="validationRegister"
+                  type="is-danger"
+                  expanded
                   >Oke</b-button
                 >
               </div>
