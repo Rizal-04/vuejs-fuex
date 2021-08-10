@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex justify-center items-center min-h-screen"
-    style="background-color: red; max-width: 450px; width: 100%"
+    style="background-color: rgb(251, 82, 82); max-width: 450px; width: 100%"
   >
     <div class="flex flex-col h-screen justify-around">
       <div>

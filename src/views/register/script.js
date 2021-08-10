@@ -84,7 +84,7 @@ export default {
           username: this.dataForm.register.firstName,
           fullName: this.dataForm.register.lastName,
           email: this.dataForm.register.email,
-          mobilePhoneNumber: "089204731540",
+          mobilePhoneNumber: "083204731540",
         };
 
         // hardcord
@@ -107,6 +107,7 @@ export default {
               duration: 1500,
               message: resp.data.message,
               type: "is-success",
+              onConfirm: () => this.cleardataFormRegister(),
             });
           } else {
             this.$buefy.toast.open({
@@ -120,6 +121,11 @@ export default {
         }
         this.property.register.isLoading = false;
       }
+    },
+    cleardataFormRegister() {
+      this.dataForm.register.firstName = "";
+      this.dataForm.register.lastName = "";
+      this.dataForm.register.email = "";
     },
     closeModalAlreadyExist() {
       this.property.alreadyExist.isLoading = true;

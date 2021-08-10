@@ -1,7 +1,7 @@
 <template>
   <div
     class="flex justify-center items-center min-h-screen"
-    style="background-color: red; max-width: 450px; width: 100%"
+    style="background-color: rgb(251, 82, 82); max-width: 450px; width: 100%"
   >
     <div class="flex flex-col h-screen justify-around ">
       <div>
@@ -18,8 +18,8 @@
               <div class="flex flex-col">
                 <b-field>
                   <b-input
-                    type="email"
                     placeholder="Email"
+                    type="email"
                     v-model="dataForm.checkingUser.emailUser"
                   >
                   </b-input>
@@ -93,30 +93,32 @@
           <div class="card rounded-xl">
             <div class="card-content">
               <div class="flex flex-col">
-                <b-field>
-                  <b-input
-                    type="text"
-                    v-model="dataForm.register.firstName"
-                    placeholder="Nama Depan"
-                  >
-                  </b-input>
-                </b-field>
-                <b-field>
-                  <b-input
-                    type="text"
-                    v-model="dataForm.register.lastName"
-                    placeholder="Nama Belakang"
-                  >
-                  </b-input>
-                </b-field>
-                <b-field>
-                  <b-input
-                    type="email"
-                    v-model="dataForm.register.email"
-                    placeholder="Email"
-                  >
-                  </b-input>
-                </b-field>
+                <div>
+                  <b-field>
+                    <b-input
+                      type="text"
+                      v-model="dataForm.register.firstName"
+                      placeholder="Nama Depan"
+                    >
+                    </b-input>
+                  </b-field>
+                  <b-field>
+                    <b-input
+                      type="text"
+                      v-model="dataForm.register.lastName"
+                      placeholder="Nama Belakang"
+                    >
+                    </b-input>
+                  </b-field>
+                  <b-field>
+                    <b-input
+                      placeholder="Email"
+                      type="email"
+                      v-model="dataForm.register.email"
+                    >
+                    </b-input>
+                  </b-field>
+                </div>
                 <div class="buttons">
                   <b-button
                     class="rounded-full"
