@@ -32,6 +32,7 @@
           style="display: flex; justify-content: center; align-items: center; flex-direction: column;"
         >
           <div
+            @click="konsultasibengkel"
             class="card rounded-xl mb-2"
             style="width: 100%; display: flex; justify-content: center; align-items: center; border-radius: 10px; min-width: 45px; height: 45px; max-width: 45px; cursor:pointer;"
           >
