@@ -5,7 +5,7 @@
   >
     <button
       class="m-4 flex flex-col justify-center items-center"
-      @click="handleRoute('/home')"
+      @click="handleRoute('/')"
     >
       <img src="@/assets/icons/home.svg" style="width: 18px; height: 20px;" />
       <b style="font-size: 11px;">Home</b>

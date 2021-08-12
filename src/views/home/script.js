@@ -36,4 +36,9 @@ export default {
       ],
     };
   },
+  methods: {
+    handleRoute(tujuan) {
+      this.$router.push(tujuan);
+    },
+  },
 };

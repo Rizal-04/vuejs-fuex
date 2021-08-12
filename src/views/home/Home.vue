@@ -17,6 +17,7 @@
         style="margin-top: -60px; display: flex; align-items: center; justify-content: space-evenly; flex-direction: row; background-color: rgb(255, 255, 255); width: 90%; height: 130px; border-radius: 10px; font-size: 11px; color: gray;"
       >
         <div
+          @click="handleRoute('/pilih-lokasi')"
           style="display: flex; justify-content: center; align-items: center; flex-direction: column;"
         >
           <div
@@ -39,6 +40,7 @@
           <p>Konsultasi</p>
         </div>
         <div
+          @click="handleRoute('/vouchers')"
           style="display: flex; justify-content: center; align-items: center; flex-direction: column;"
         >
           <div
