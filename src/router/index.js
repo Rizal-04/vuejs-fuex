@@ -7,6 +7,8 @@ const Home = () => import("@/views/home");
 const Order = () => import("@/views/order");
 const Help = () => import("@/views/help");
 const Akun = () => import("@/views/akun");
+const LocationSelect = () => import("@/views/location-select");
+const Vouchers = () => import("@/views/vouchers");
 
 Vue.use(Router);
 
@@ -70,6 +72,7 @@ function configRoutes() {
           children: [
             {
               path: "history",
+              name: "Order",
               beforeEnter: ifAuthenticated,
               component: Order,
             },
@@ -98,6 +101,18 @@ function configRoutes() {
           name: "Register",
           beforeEnter: ifNotAuthenticated,
           component: Register,
+        },
+        {
+          path: "pilih-lokasi",
+          name: "LocationSelect",
+          beforeEnter: ifAuthenticated,
+          component: LocationSelect,
+        },
+        {
+          path: "vouchers",
+          name: "Vouchers",
+          beforeEnter: ifAuthenticated,
+          component: Vouchers,
         },
       ],
     },

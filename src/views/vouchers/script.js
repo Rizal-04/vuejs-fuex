@@ -1,6 +1,6 @@
 const Navbar = () => import("../container/the-navbar");
 
 export default {
-  name: "Help",
+  name: "Vouchers",
   components: { Navbar },
 };
