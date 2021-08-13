@@ -30,7 +30,7 @@ export default {
           emailUser: "",
         },
         register: {
-          firstName: "",
+          username: "",
           lastName: "",
           email: "",
           mobilePhoneNumber: "",
@@ -77,7 +77,7 @@ export default {
     },
     async handleRegister() {
       if (
-        this.dataForm.register.firstName === "" ||
+        this.dataForm.register.username === "" ||
         this.dataForm.register.lastName === "" ||
         this.dataForm.register.mobilePhoneNumber === ""
       ) {
@@ -85,7 +85,7 @@ export default {
       } else {
         this.property.register.isLoading = true;
         const payload = {
-          username: this.dataForm.register.firstName,
+          username: this.dataForm.register.username,
           fullName: this.dataForm.register.lastName,
           email: this.dataForm.register.email,
           mobilePhoneNumber: this.dataForm.register.mobilePhoneNumber,
@@ -115,7 +115,7 @@ export default {
             });
             var convertToString = JSON.stringify(resp.data.content);
             sessionStorage.setItem("user_data", convertToString);
-            this.$router.push("/pages/login");
+            this.$router.push("/");
           } else {
             this.$buefy.toast.open({
               duration: 1500,
@@ -130,7 +130,7 @@ export default {
       }
     },
     cleardataFormRegister() {
-      this.dataForm.register.firstName = "";
+      this.dataForm.register.username = "";
       this.dataForm.register.lastName = "";
       this.dataForm.register.email = "";
     },

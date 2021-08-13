@@ -110,8 +110,8 @@
                   <b-field>
                     <b-input
                       type="text"
-                      v-model="dataForm.register.firstName"
-                      placeholder="Nama Depan"
+                      v-model="dataForm.register.username"
+                      placeholder="Username"
                     >
                     </b-input>
                   </b-field>
