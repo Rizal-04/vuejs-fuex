@@ -44,7 +44,7 @@ const ifAuthenticated = async (to, from, next) => {
   if (getUserDataFromSession) {
     return next();
   } else {
-    next("/login");
+    next("/pages/login");
   }
 };
 
@@ -91,16 +91,28 @@ function configRoutes() {
           component: Akun,
         },
         {
-          path: "login",
-          name: "Login",
-          beforeEnter: ifNotAuthenticated,
-          component: Login,
-        },
-        {
-          path: "register",
-          name: "Register",
-          beforeEnter: ifNotAuthenticated,
-          component: Register,
+          path: "/pages",
+          name: "pages",
+          component: {
+            render(c) {
+              return c("router-view");
+            },
+          },
+          children: [
+            {
+              path: "login",
+              name: "Login",
+              beforeEnter: ifNotAuthenticated,
+              component: Login,
+            },
+
+            {
+              path: "register",
+              name: "Register",
+              beforeEnter: ifNotAuthenticated,
+              component: Register,
+            },
+          ],
         },
         {
           path: "pilih-lokasi",

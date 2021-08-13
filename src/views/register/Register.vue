@@ -39,7 +39,11 @@
           </div>
         </div>
 
-        <b-modal v-model="property.modal.showModalAlreadyExist" :width="300">
+        <b-modal
+          v-model="property.modal.showModalAlreadyExist"
+          :can-cancel="false"
+          :width="300"
+        >
           <div class="card rounded-xl">
             <div class="card-content ">
               <div class="flex flex-col jutify-center items-center">
@@ -63,11 +67,19 @@
           </div>
         </b-modal>
 
-        <b-modal v-model="property.modal.showModalOtp" :width="300">
+        <b-modal
+          v-model="property.modal.showModalOtp"
+          :width="300"
+          :can-cancel="false"
+        >
           <div class="card rounded-xl">
             <div class="card-content ">
               <div class="flex flex-col jutify-center items-center">
                 <div class=" mb-4">
+                  <p>
+                    silahkan cek Email anda dan masukan Kode otp ke inputan
+                    bawah ini:
+                  </p>
                   <b-field>
                     <b-input type="text" v-model="dataForm.codeOtp"></b-input>
                   </b-field>
@@ -76,6 +88,7 @@
               <div class="buttons">
                 <b-button
                   class="rounded-full"
+                  :loading="property.isLoading"
                   @click="validationRegister"
                   type="is-danger"
                   expanded
@@ -93,7 +106,7 @@
           <div class="card rounded-xl">
             <div class="card-content">
               <div class="flex flex-col">
-                <div>
+                <div class="mb-2">
                   <b-field>
                     <b-input
                       type="text"
@@ -106,7 +119,15 @@
                     <b-input
                       type="text"
                       v-model="dataForm.register.lastName"
-                      placeholder="Nama Belakang"
+                      placeholder="Nama Lengkap"
+                    >
+                    </b-input>
+                  </b-field>
+                  <b-field>
+                    <b-input
+                      type="text"
+                      v-model="dataForm.register.mobilePhoneNumber"
+                      placeholder="No Telfon"
                     >
                     </b-input>
                   </b-field>
@@ -115,6 +136,7 @@
                       placeholder="Email"
                       type="email"
                       v-model="dataForm.register.email"
+                      disabled
                     >
                     </b-input>
                   </b-field>
