@@ -40,5 +40,10 @@ export default {
     handleRoute(tujuan) {
       this.$router.push(tujuan);
     },
+    konsultasibengkel() {
+      window.open(
+        `https://api.whatsapp.com/send?phone=6285842917951&text=Saya%20Mau%20Konsultasi%20Nih`
+      );
+    },
   },
 };

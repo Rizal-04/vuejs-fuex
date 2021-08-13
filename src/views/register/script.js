@@ -5,6 +5,7 @@ export default {
   data() {
     return {
       property: {
+        isLoading: false,
         alreadyExist: {
           isLoading: false,
         },
@@ -24,6 +25,7 @@ export default {
       },
       dataForm: {
         codeOtp: "",
+        implementsEmailUser: "",
         checkingUser: {
           emailUser: "",
         },
@@ -31,6 +33,7 @@ export default {
           firstName: "",
           lastName: "",
           email: "",
+          mobilePhoneNumber: "",
         },
       },
     };
@@ -52,18 +55,19 @@ export default {
             reqUrl: "checking-avalibility-user",
             headers: headers,
           });
-          console.log(resp);
+          // console.log(resp);
           if (resp.data.message === "SUCCESS") {
             setTimeout(() => {
+              this.dataForm.implementsEmailUser = resp.data.content.email;
               this.dataForm.checkingUser.emailUser = "";
               this.property.checkingUser.isLoading = false;
-              this.property.modal.showModalAlreadyExist = true;
+              this.property.modal.showModalOtp = true;
             }, timeout);
           } else {
             setTimeout(() => {
               this.dataForm.checkingUser.emailUser = "";
               this.property.checkingUser.isLoading = false;
-              this.property.modal.showModalOtp = true;
+              this.property.modal.showModalAlreadyExist = true;
             }, timeout);
           }
         } catch (error) {
@@ -75,7 +79,7 @@ export default {
       if (
         this.dataForm.register.firstName === "" ||
         this.dataForm.register.lastName === "" ||
-        this.dataForm.register.email === ""
+        this.dataForm.register.mobilePhoneNumber === ""
       ) {
         return;
       } else {
@@ -84,7 +88,7 @@ export default {
           username: this.dataForm.register.firstName,
           fullName: this.dataForm.register.lastName,
           email: this.dataForm.register.email,
-          mobilePhoneNumber: "083204731540",
+          mobilePhoneNumber: this.dataForm.register.mobilePhoneNumber,
         };
 
         // hardcord
@@ -104,11 +108,14 @@ export default {
           console.log(resp);
           if (resp.data.message === "SUCCESS") {
             this.$buefy.toast.open({
-              duration: 1500,
+              duration: 2000,
               message: resp.data.message,
               type: "is-success",
               onConfirm: () => this.cleardataFormRegister(),
             });
+            var convertToString = JSON.stringify(resp.data.content);
+            sessionStorage.setItem("user_data", convertToString);
+            this.$router.push("/pages/login");
           } else {
             this.$buefy.toast.open({
               duration: 1500,
@@ -132,10 +139,34 @@ export default {
       this.property.modal.showModalAlreadyExist = false;
       this.property.alreadyExist.isLoading = false;
     },
-    validationRegister() {
-      this.property.modal.showModalOtp = false;
-      this.dataForm.codeOtp = false;
-      this.identifier.isEmail = false;
+    async validationRegister() {
+      const payload = {
+        otp: this.dataForm.codeOtp,
+        email: this.dataForm.implementsEmailUser,
+      };
+      this.property.isLoading = true;
+      try {
+        const resp = await this.$store.dispatch({
+          type: "GET_DATA",
+          reqUrl: `checking-otp?otp=${this.dataForm.codeOtp}&email=${this.dataForm.implementsEmailUser}`,
+          params: payload,
+        });
+        if (resp.data.message === "SUCCESS") {
+          this.dataForm.register.email = resp.data.content.email;
+          this.property.modal.showModalOtp = false;
+          this.identifier.isEmail = false;
+          this.property.isLoading = false;
+        } else {
+          this.$buefy.toast.open({
+            duration: 1500,
+            message: resp.data.content,
+            type: "is-danger",
+          });
+          this.property.isLoading = false;
+        }
+      } catch (error) {
+        console.error(error);
+      }
     },
   },
 };
