@@ -113,6 +113,12 @@ function configRoutes() {
               beforeEnter: ifNotAuthenticated,
               component: Register,
             },
+            {
+              path: "forgot-password",
+              name: "ForfotPassword",
+              beforeEnter: ifNotAuthenticated,
+              component: ForgotPassword,
+            },
           ],
         },
         {
@@ -126,12 +132,6 @@ function configRoutes() {
           name: "Vouchers",
           beforeEnter: ifAuthenticated,
           component: Vouchers,
-        },
-        {
-          path: "forgot-password",
-          name: "ForfotPassword",
-          beforeEnter: ifNotAuthenticated,
-          component: ForgotPassword,
         },
       ],
     },

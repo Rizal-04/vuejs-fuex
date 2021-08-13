@@ -47,7 +47,7 @@ export default {
           });
           setTimeout(() => {
             this.property.isLoading = false;
-            this.$router.push("Home");
+            this.$router.replace("/home");
             this.dataForm.email = "";
             this.dataForm.password = "";
             return;
