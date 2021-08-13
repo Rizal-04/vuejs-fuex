@@ -9,6 +9,7 @@ const Help = () => import("@/views/help");
 const Akun = () => import("@/views/akun");
 const LocationSelect = () => import("@/views/location-select");
 const Vouchers = () => import("@/views/vouchers");
+const ForgotPassword = () => import("@/views/forgot-password");
 
 Vue.use(Router);
 
@@ -113,6 +114,12 @@ function configRoutes() {
           name: "Vouchers",
           beforeEnter: ifAuthenticated,
           component: Vouchers,
+        },
+        {
+          path: "forgot-password",
+          name: "ForfotPassword",
+          beforeEnter: ifNotAuthenticated,
+          component: ForgotPassword,
         },
       ],
     },

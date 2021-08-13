@@ -5,8 +5,8 @@
   >
     <div class="flex flex-col h-screen justify-around">
       <div>
-        <h1 class="text-2xl text-white">Selamat Datang</h1>
-        <span class="text-white">Silahkan Login untuk masuk ke akun anda</span>
+        <h1 class="text-2xl text-white">Forgot Password</h1>
+        <span class="text-white">Masukan password baru: </span>
       </div>
       <div>
         <div style="margin: 25px 0px 25px 0px">
@@ -14,30 +14,17 @@
             <div class="card-content">
               <div class="flex flex-col">
                 <b-field>
-                  <b-input
-                    type="email"
-                    placeholder="Email"
-                    v-model="dataForm.email"
-                  >
-                  </b-input>
+                  <b-input type="email" placeholder="Email"> </b-input>
                 </b-field>
                 <b-field>
-                  <b-input
-                    type="password"
-                    placeholder="password"
-                    v-model="dataForm.password"
-                  >
+                  <b-input type="password" placeholder="new password">
                   </b-input>
                 </b-field>
-                <p class="forgot-password" @click="forgotPassword()">
-                  Forgot password?
-                </p>
                 <div class="buttons">
                   <b-button
                     class="rounded-full"
                     type="is-danger"
                     expanded
-                    @click="toLogin()"
                     :loading="property.isLoading"
                     >Lanjut</b-button
                   >
@@ -45,12 +32,6 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="flex flex-row justify-center">
-          <span class="text-white">Belom Punya Akun?</span>
-          <span class="text-white cursor-pointer" @click="routePageRegister"
-            >Daftar</span
-          >
         </div>
       </div>
       <b-modal v-model="emailNotFound" :width="300" :can-cancel="false">
@@ -64,16 +45,12 @@
                 <h1
                   style="color:red; font-size: 14px; padding: 5px 0px 5px 0px"
                 >
-                  {{ errorMessage }}
+                  <!-- {{ errorMessage }} -->
                 </h1>
               </div>
             </div>
             <div class="buttons">
-              <b-button
-                class="rounded-full"
-                @click="cleareErrorMessage"
-                type="is-danger"
-                expanded
+              <b-button class="rounded-full" type="is-danger" expanded
                 >Oke</b-button
               >
             </div>
@@ -85,4 +62,4 @@
 </template>
 
 <script src="./script.js" />
-<style src="./styles.css" />
+<style src="./style.css" />

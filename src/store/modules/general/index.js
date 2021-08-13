@@ -34,5 +34,20 @@ export default {
         }
       });
     },
+    LOGIN({ commit }, { reqUrl, payload, headers }) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const resp = await axios({
+            url: `${endPoint}` + `${reqUrl}`,
+            method: "POST",
+            data: payload,
+            headers: headers,
+          });
+          resolve(resp);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
   },
 };
