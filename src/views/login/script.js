@@ -31,7 +31,7 @@ export default {
       }
       this.property.isLoading = true;
       try {
-        const res = await this.$store.dispatch({
+        const resp = await this.$store.dispatch({
           type: "LOGIN",
           reqUrl: "login",
           headers: {
@@ -39,19 +39,22 @@ export default {
             password: this.dataForm.password,
           },
         });
-        if (res.data.message === "SUCCESS") {
+        if (resp.data.message === "SUCCESS") {
           this.$buefy.toast.open({
-            duration: 1500,
-            message: res.data.message,
+            duration: 1000,
+            message: resp.data.message,
             type: "is-success",
           });
           setTimeout(() => {
             this.property.isLoading = false;
-            this.$router.replace("/home");
+            // this.$router.replace("/home");
             this.dataForm.email = "";
             this.dataForm.password = "";
+            var convertToString = JSON.stringify(resp.data.content);
+            window.location.reload();
+            sessionStorage.setItem("User_Data_Login", convertToString);
             return;
-          }, 700);
+          }, 1500);
         } else {
           this.property.isLoading = false;
           this.emailNotFound = true;

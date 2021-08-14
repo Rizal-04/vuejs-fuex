@@ -114,8 +114,8 @@ export default {
               onConfirm: () => this.cleardataFormRegister(),
             });
             var convertToString = JSON.stringify(resp.data.content);
+            window.location.reload();
             sessionStorage.setItem("user_data", convertToString);
-            this.$router.push("/");
           } else {
             this.$buefy.toast.open({
               duration: 1500,

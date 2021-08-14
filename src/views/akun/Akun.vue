@@ -19,8 +19,8 @@
           />
         </div>
         <div class="text-black" style="width: 70%;">
-          <p>Nama Lengkap</p>
-          <p>Email</p>
+          <p>{{ identity.username }}</p>
+          <p>{{ identity.email }}</p>
         </div>
       </div>
       <div
@@ -50,9 +50,10 @@
         </b-button>
       </div>
       <div>
-        <b-button>LOG OUT</b-button>
+        <b-button @click="handleLogout">LOG OUT</b-button>
       </div>
     </div>
+    <bottom-navigation />
   </div>
 </template>
 
