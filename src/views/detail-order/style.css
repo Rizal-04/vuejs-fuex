@@ -1,0 +1,59 @@
+.saknjkdnfkjd {
+  padding: 0px 0px 0px 20px;
+  font-size: 15px;
+  position: relative;
+  align-items: center;
+  max-width: 500px;
+  color: black;
+  height: auto;
+}
+
+.asjkadnnas {
+  color: red;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 0px 0px 0px 20px;
+  cursor: pointer;
+}
+.asjkadnnas:hover {
+  text-decoration: underline;
+  text-decoration-color: rgb(255, 2, 2);
+}
+
+.aNCjNKQNd0030 {
+  padding-top: 70px;
+  color: black;
+}
+
+.akjdfnjndckj0129 {
+  display: flex;
+  padding: 10px 0px 10px 20px;
+  max-width: 380px;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    display: auto;
+  }
+}
+
+.nlaenifni3912 {
+  padding-top: 80px;
+  color: black;
+}
+
+/* Thick red border */
+hr.tebal {
+  border: 1px solid rgb(145, 140, 140);
+}
+
+.mslasmclxska {
+  border: none;
+  outline: none;
+  background-color: rgba(229, 231, 235);
+  width: 120px;
+  padding-left: 10px;
+}
+
+.mcoampMMP29328 {
+  background-color: red;
+  width: 60px;
+}

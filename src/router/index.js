@@ -10,6 +10,7 @@ const Akun = () => import("@/views/akun");
 const LocationSelect = () => import("@/views/location-select");
 const Vouchers = () => import("@/views/vouchers");
 const ForgotPassword = () => import("@/views/forgot-password");
+const DetailOrder = () => import("@/views/detail-order");
 
 Vue.use(Router);
 
@@ -76,6 +77,12 @@ function configRoutes() {
               name: "Order",
               beforeEnter: ifAuthenticated,
               component: Order,
+            },
+            {
+              path: "detail-order",
+              name: "DetailOrder",
+              beforeEnter: ifAuthenticated,
+              component: DetailOrder,
             },
           ],
         },
