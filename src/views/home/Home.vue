@@ -8,8 +8,8 @@
       style="display: flex; justify-content: flex-start; flex-direction: column; background-color: rgb(251, 82, 82); width: 100%; height: 170px; color: white;"
     >
       <div>
-        <h1 class="text-white mb-4">Selamat Datang</h1>
-        <span class="text-white">Username</span>
+        <h1 class="text-white text-lg mb-3">Selamat Datang</h1>
+        <span class="text-white text-base">{{ username }}</span>
       </div>
     </div>
     <div class="flex justify-center items-center">
@@ -130,6 +130,7 @@
         </b-carousel>
       </div>
     </div>
+    <bottom-navigation />
   </div>
 </template>
 

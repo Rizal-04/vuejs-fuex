@@ -14,15 +14,9 @@ const DetailOrder = () => import("@/views/detail-order");
 
 Vue.use(Router);
 
-const router = new Router({
-  mode: "history",
-  routes: configRoutes(),
-  scrollBehavior: () => ({ y: 0 }),
-});
-
 const ifNotAuthenticated = (to, from, next) => {
   const getUserDataFromSession = JSON.parse(
-    sessionStorage.getItem("user_data")
+    sessionStorage.getItem("User_Data_Login")
   );
   if (!getUserDataFromSession) {
     next();
@@ -41,7 +35,7 @@ const ifNotAuthenticated = (to, from, next) => {
 
 const ifAuthenticated = async (to, from, next) => {
   const getUserDataFromSession = JSON.parse(
-    sessionStorage.getItem("user_data")
+    sessionStorage.getItem("User_Data_Login")
   );
   if (getUserDataFromSession) {
     return next();
@@ -144,5 +138,9 @@ function configRoutes() {
     },
   ];
 }
-
+const router = new Router({
+  mode: "history",
+  routes: configRoutes(),
+  scrollBehavior: () => ({ y: 0 }),
+});
 export default router;

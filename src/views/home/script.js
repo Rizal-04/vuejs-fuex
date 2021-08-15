@@ -1,7 +1,11 @@
+const BottomNavigation = () => import("../container/the-bottomNavigation");
+
 export default {
   name: "Home",
+  components: { BottomNavigation },
   data() {
     return {
+      username: "",
       carousels: [
         {
           text: "Slide 1",
@@ -37,6 +41,10 @@ export default {
     };
   },
   methods: {
+    handleGetUsername() {
+      var getUsername = JSON.parse(sessionStorage.getItem("User_Data_Login"));
+      this.username = getUsername.fullName;
+    },
     handleRoute(tujuan) {
       this.$router.push(tujuan);
     },
@@ -45,5 +53,8 @@ export default {
         `https://api.whatsapp.com/send?phone=6285842917951&text=Saya%20Mau%20Konsultasi%20Nih`
       );
     },
+  },
+  mounted() {
+    this.handleGetUsername();
   },
 };
