@@ -53,6 +53,7 @@
           tabindex="0"
           type="button"
           style="width: 90%; background-color: rgb(251, 0, 0); color: white;"
+          @click="$router.push('/order/detail-order')"
         >
           <span>PILIH LOKASI INI</span>
         </b-button>

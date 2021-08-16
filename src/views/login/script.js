@@ -47,7 +47,6 @@ export default {
           });
           setTimeout(() => {
             this.property.isLoading = false;
-            // this.$router.replace("/home");
             this.dataForm.email = "";
             this.dataForm.password = "";
             var convertToString = JSON.stringify(resp.data.content);

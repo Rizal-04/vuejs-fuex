@@ -36,13 +36,13 @@
 }
 
 .nlaenifni3912 {
-  padding-top: 80px;
+  padding-top: 70px;
   color: black;
 }
 
 /* Thick red border */
 hr.tebal {
-  border: 1px solid rgb(145, 140, 140);
+  border: 1px solid rgb(192, 182, 182);
 }
 
 .mslasmclxska {
@@ -55,5 +55,83 @@ hr.tebal {
 
 .mcoampMMP29328 {
   background-color: red;
-  width: 60px;
+  width: auto;
+}
+
+.nlacairnfcfiuea823 {
+  padding: 50px 20px 37px 20px;
+}
+
+.container {
+  display: block;
+  position: relative;
+  padding-left: 38px;
+  line-height: normal;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 22px;
+  width: 22px;
+  background-color: #eee;
+  border: 1px solid black;
+}
+
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+.container2 {
+  display: block;
+  position: relative;
+  padding-left: 38px;
+  line-height: normal;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.container2 input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
 }
