@@ -29,6 +29,11 @@ export default {
   },
   watch: {
     liter: function(v) {
+      if (v > 30) {
+        alert("Maaf, kami hanya menyediakan 30 Liter bahan bakar saja");
+        this.liter = 0;
+        return;
+      }
       const aln912 = v * this.perLiter;
       this.dataForm.money = aln912;
       this.details.payTotal = aln912 + this.adminFee - this.details.discount;
