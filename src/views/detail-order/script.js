@@ -4,6 +4,7 @@ export default {
   name: "DetailOrder",
   data() {
     return {
+      alamat: "",
       select: {
         jenisKendaraan: "",
         jenisBahanbakar: "",
@@ -44,8 +45,14 @@ export default {
     locationGet(t, y) {
       this.location = t.slice(0, 37) + (t.length > 37 && y ? "..." : "");
     },
+    handleGetAlamat() {
+      var getAlamat = JSON.parse(sessionStorage.getItem("location_selected"));
+      this.alamat = getAlamat.addressDetails;
+      console.log(getAlamat);
+      this.locationGet(this.alamat, true);
+    },
   },
-  created() {
-    this.locationGet("Pasar Mangkang, Ngaliyan, Semarang, Jawa Tengah", true);
+  mounted() {
+    this.handleGetAlamat();
   },
 };

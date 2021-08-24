@@ -26,15 +26,17 @@
           />
         </font>
         <span class="font-medium">Alamat</span>
-        <div class="flex flex-row ">
-          <font style="padding: 10px 0px 0px 0px">
-            <img
-              src="@/assets/icons/pngegg.png"
-              alt="icon"
-              class="w-4 h-6 ml-4"
-            />
-          </font>
-          <span class="saknjkdnfkjd">{{ location }}</span>
+        <div class="flex flex-row justify-between items-center">
+          <div class="flex flex-row">
+            <font style="padding: 10px 0px 0px 0px">
+              <img
+                src="@/assets/icons/pngegg.png"
+                alt="icon"
+                class="w-4 h-6 ml-4"
+              />
+            </font>
+            <span class="saknjkdnfkjd">{{ location }}</span>
+          </div>
           <p class="asjkadnnas">
             ganti
           </p>
@@ -86,6 +88,9 @@
             <select
               style="background-color:  rgba(229, 231, 235); width: 100%; height: 40px; padding-left: 10px;"
               v-model="select.jenisBahanbakar"
+              v-bind:disabled="
+                select.jenisKendaraan.length === 0 ? true : false
+              "
             >
               <option value="" disabled hidden>Pilih Tipe Bahan Bakar</option>
               <option value="pertamax">Pertamax</option>

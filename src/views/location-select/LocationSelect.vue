@@ -27,22 +27,30 @@
         style="display: flex; justify-content: center; align-items: center; flex-direction: row; width: 100%; background-color: white; border-width: 1px; border-style: ridge;"
       >
         <div
-          style="width: 95%; display: flex; justify-content: space-between; align-items: center; flex-direction: row; height:50px;"
+          style="width: 90%; display: flex; justify-content: space-between; align-items: center; height:50px;"
         >
           <p>Kecamatan</p>
-          <select style="background-color: white; border: 0px;"></select>
+          <select
+            style="background-color: white; border: 0px; width:50%;"
+            v-model="dataForm.selected"
+          >
+            <option v-for="location in locationSelect" :key="location.id">{{
+              location.lokasi
+            }}</option>
+          </select>
         </div>
       </div>
       <div
         style="display: flex; justify-content: center; align-items: flex-start; width: 100%; background-color: white; border-width: 1px; border-style: ridge; "
       >
         <div
-          style="width: 95%; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; height:80px;"
+          style="width: 90%; display: flex; justify-content: center; align-items: flex-start; flex-direction: column; height:80px;"
         >
           <p class="mb-4">Detail Alamat</p>
           <input
             placeholder="Nama Gedung, Jalan, Bangunan , RT/RW , No.Jalan"
-            style="width: 95%; border: none; outline: none;"
+            style="width: 90%; border: none; outline: none;"
+            v-model="dataForm.addressDetails"
           />
         </div>
       </div>
@@ -53,7 +61,7 @@
           tabindex="0"
           type="button"
           style="width: 90%; background-color: rgb(251, 0, 0); color: white;"
-          @click="$router.push('/order/detail-order')"
+          @click="handleConfirm"
         >
           <span>PILIH LOKASI INI</span>
         </b-button>
