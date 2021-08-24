@@ -11,7 +11,6 @@ const LocationSelect = () => import("@/views/location-select");
 const Vouchers = () => import("@/views/vouchers");
 const ForgotPassword = () => import("@/views/forgot-password");
 const DetailOrder = () => import("@/views/detail-order");
-const NotFound = () => import("@/components/NotFound.vue");
 
 Vue.use(Router);
 
@@ -137,7 +136,6 @@ function configRoutes() {
         },
       ],
     },
-    { path: "*", component: NotFound },
   ];
 }
 const router = new Router({
