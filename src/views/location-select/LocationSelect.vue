@@ -31,9 +31,10 @@
         >
           <p>Kecamatan</p>
           <select
-            style="background-color: white; border: 0px; width:50%;"
+            style="background-color: white; border: 0px; width:30%;"
             v-model="dataForm.selected"
           >
+            <option value="" disabled hidden>Pilih Alamat</option>
             <option v-for="location in locationSelect" :key="location.id">{{
               location.lokasi
             }}</option>

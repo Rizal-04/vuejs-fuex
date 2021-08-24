@@ -37,7 +37,7 @@
             </font>
             <span class="saknjkdnfkjd">{{ location }}</span>
           </div>
-          <p class="asjkadnnas">
+          <p class="asjkadnnas" @click="changeLocation('/pilih-lokasi')">
             ganti
           </p>
         </div>
@@ -49,11 +49,15 @@
           <div>
             <select
               style="background-color:  rgba(229, 231, 235); width: 100%; height: 40px; padding-left: 10px;"
-              v-model="select.jenisKendaraan"
+              v-model="jenisKendaraan"
             >
               <option value="" disabled hidden>Pilih Tipe Kendaraan</option>
-              <option value="Mobil">Car</option>
-              <option value="Motor">Motor</option>
+              <option
+                v-for="(data, index) in vehicleType"
+                :value="index"
+                :key="index"
+                >{{ data.tipeKendaraan }}</option
+              >
             </select>
           </div>
           <p style="font-size: 16px; padding-top: 8px;">
@@ -87,14 +91,16 @@
           <div>
             <select
               style="background-color:  rgba(229, 231, 235); width: 100%; height: 40px; padding-left: 10px;"
-              v-model="select.jenisBahanbakar"
-              v-bind:disabled="
-                select.jenisKendaraan.length === 0 ? true : false
-              "
+              v-model="jenisBahanbakar"
+              v-bind:disabled="jenisKendaraan.length === 0 ? true : false"
             >
               <option value="" disabled hidden>Pilih Tipe Bahan Bakar</option>
-              <option value="pertamax">Pertamax</option>
-              <option value="Pertalite">Pertalite</option>
+              <option
+                v-for="(data, index) in fuelType"
+                :key="index"
+                :value="index"
+                >{{ data.tipeBensin }}</option
+              >
             </select>
           </div>
           <p style="font-size: 16px; padding-top: 8px;">

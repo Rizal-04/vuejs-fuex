@@ -5,10 +5,8 @@ export default {
   data() {
     return {
       alamat: "",
-      select: {
-        jenisKendaraan: "",
-        jenisBahanbakar: "",
-      },
+      jenisKendaraan: "",
+      jenisBahanbakar: "",
       dataForm: {
         fullName: "",
         phoneNumber: "",
@@ -21,6 +19,8 @@ export default {
         payTotal: 0,
         discount: 0,
       },
+      vehicleType: [],
+      fuelType: [],
       liter: 0,
       perLiter: 7_500,
       adminFee: 1_500,
@@ -39,20 +39,44 @@ export default {
       this.dataForm.money = aln912;
       this.details.payTotal = aln912 + this.adminFee - this.details.discount;
     },
+    jenisKendaraan: function(p) {
+      this.jenisBahanbakar = "";
+      this.fuelType = this.vehicleType[p].fuelTypeId;
+    },
   },
   components: { Navbar },
   methods: {
+    async getVehicleType() {
+      try {
+        const resp = await this.$store.dispatch({
+          type: "GET_DATA",
+          reqUrl: "reference/vehicle-type",
+        });
+        console.log(resp.data.content);
+        if (resp.data.message === "SUCCESS") {
+          this.vehicleType = resp.data.content;
+        } else {
+          return;
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
     locationGet(t, y) {
       this.location = t.slice(0, 37) + (t.length > 37 && y ? "..." : "");
     },
     handleGetAlamat() {
       var getAlamat = JSON.parse(sessionStorage.getItem("location_selected"));
-      this.alamat = getAlamat.addressDetails;
+      this.alamat = getAlamat.addressDetails + "\t" + getAlamat.selected;
       console.log(getAlamat);
       this.locationGet(this.alamat, true);
+    },
+    changeLocation(t) {
+      this.$router.push(t);
     },
   },
   mounted() {
     this.handleGetAlamat();
+    this.getVehicleType();
   },
 };

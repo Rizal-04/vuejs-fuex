@@ -34,6 +34,14 @@ export default {
       }
     },
     handleConfirm() {
+      if (this.dataForm.selected === "") {
+        alert("Silahkan Pilih Kecamatan Terlebih Dahulu");
+        return;
+      }
+      if (this.dataForm.addressDetails === "") {
+        alert("Silahkan Isi Detail Alamat Terlebih Dahulu");
+        return;
+      }
       const locationSelect = {
         selected: this.dataForm.selected,
         addressDetails: this.dataForm.addressDetails,
