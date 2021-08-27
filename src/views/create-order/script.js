@@ -113,6 +113,17 @@ export default {
         this.payTotal = this.perLiter + this.adminFee;
         this.discount = 0;
       } else {
+        if (
+          res.data.content.inUseCount < 0 ||
+          res.data.content.inUseCount === 0
+        ) {
+          this.$buefy.toast.open({
+            duration: 3000,
+            message: "Vocher is Out",
+            type: "is-danger",
+          });
+          return;
+        }
         this.$buefy.toast.open({
           duration: 2000,
           message: "Vocher Digunakan",
