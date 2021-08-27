@@ -57,7 +57,7 @@ export default {
         } else {
           this.property.isLoading = false;
           this.emailNotFound = true;
-          this.errorMessage = res.data.content;
+          this.errorMessage = resp.data.content;
           return;
         }
       } catch (error) {

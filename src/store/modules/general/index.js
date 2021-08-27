@@ -49,5 +49,19 @@ export default {
         }
       });
     },
+    TRANSAKSI({ commit }, { reqUrl, payload }) {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const resp = await axios({
+            url: `${endPoint}` + `${reqUrl}`,
+            method: "POST",
+            data: payload,
+          });
+          resolve(resp);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
   },
 };
