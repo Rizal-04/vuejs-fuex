@@ -47,7 +47,7 @@ export default {
         addressDetails: this.dataForm.addressDetails,
       };
       var convertToString = JSON.stringify(locationSelect);
-      this.$router.push("/order/detail-order");
+      this.$router.push("/order/create-order");
       sessionStorage.setItem("location_selected", convertToString);
     },
   },

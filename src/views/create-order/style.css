@@ -40,7 +40,7 @@
   color: black;
 }
 
-/* Thick red border */
+/* Thick gray border */
 hr.tebal {
   border: 1px solid rgb(192, 182, 182);
 }

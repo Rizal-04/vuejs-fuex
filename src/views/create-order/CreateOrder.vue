@@ -5,6 +5,7 @@
   >
     <navbar navName="Buat Pesanan" />
     <div class="pt-16 px-4">
+      <b-loading :is-full-page="isFullPage" v-model="isLoading"></b-loading>
       <p class="text-lg" style="font-size: 20px; color: #000">Identitas</p>
       <div class="pt-4 flex flex-col leading-10">
         <span class="font-medium">Atas Nama</span>
@@ -116,6 +117,7 @@
                 onkeypress="return event.charCode >= 48"
                 min="1"
                 v-model="liter"
+                v-bind:disabled="jenisBahanbakar.length === 0 ? true : false"
               />
               <font class="py-1 mcoampMMP29328">
                 <p style="text-align: center; color: white; padding: 0px 5px;">
@@ -148,11 +150,13 @@
                 class="w-full b-none py-1  rounded-sm	"
                 style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px;"
                 placeholder="Masukan Kode Vocher / Promo"
+                v-bind:disabled="liter === 0 ? true : false"
                 v-model="dataForm.vocherCode"
               />
             </font>
             <p
               style="align-items: center; font-size: 17px; padding-left: 50px; cursor: pointer;"
+              @click="useVocher"
             >
               USE
             </p>
@@ -193,11 +197,7 @@
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
                 Rp.
-                {{
-                  details.discount
-                    .toFixed(2)
-                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                }}
+                {{ discount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
@@ -209,11 +209,7 @@
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
                 Rp.
-                {{
-                  details.payTotal
-                    .toFixed(2)
-                    .replace(/\d(?=(\d{3})+\.)/g, "$&,")
-                }}
+                {{ payTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
@@ -244,8 +240,9 @@
             tabindex="0"
             type="button"
             style="width: 100%; background-color: rgb(251, 0, 0); color: white; top: 0px"
+            @click="buatPesanan"
           >
-            <span>PILIH METODE PEMBAYARAN</span>
+            <span>BUAT PESANAN</span>
           </b-button>
           <p
             style="padding-top: 25px; font-size: 13px; text-align: center; line-height: normal;"
