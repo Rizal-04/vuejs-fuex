@@ -39,6 +39,7 @@ export default {
             password: this.dataForm.password,
           },
         });
+        console.log(resp.data);
         if (resp.data.message === "SUCCESS") {
           this.$buefy.toast.open({
             duration: 1000,
@@ -50,7 +51,7 @@ export default {
             this.dataForm.email = "";
             this.dataForm.password = "";
             var convertToString = JSON.stringify(resp.data.content);
-            window.location.reload();
+            // window.location.reload();
             sessionStorage.setItem("User_Data_Login", convertToString);
             return;
           }, 1500);

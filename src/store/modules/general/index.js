@@ -19,6 +19,20 @@ export default {
         }
       });
     },
+    // GET_DATA_BY_ID({ commit }, { reqUrl, params }) {
+    //   return new Promise(async (resolve, reject) => {
+    //     try {
+    //       const resp = await axios({
+    //         url: `${endPoint}` + `${reqUrl}`,
+    //         method: "GET",
+    //         params: params,
+    //       });
+    //       resolve(resp);
+    //     } catch (error) {
+    //       reject(error);
+    //     }
+    //   });
+    // },
     POST_DATA({ commit }, { reqUrl, payload, params }) {
       return new Promise(async (resolve, reject) => {
         try {

@@ -115,7 +115,7 @@ export default {
             });
             var convertToString = JSON.stringify(resp.data.content);
             window.location.reload();
-            sessionStorage.setItem("user_data", convertToString);
+            sessionStorage.setItem("User_Data_Login", convertToString);
           } else {
             this.$buefy.toast.open({
               duration: 1500,
