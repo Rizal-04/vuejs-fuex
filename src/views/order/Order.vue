@@ -50,7 +50,7 @@
             >
               <p>{{ orders.vehicleTypeId.tipeKendaraan }}</p>
               <div>
-                <span>Status Pembayaran</span>
+                <span>{{ orders.orderStatusId.orderStatusName }}</span>
               </div>
             </div>
           </div>

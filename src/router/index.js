@@ -11,6 +11,7 @@ const LocationSelect = () => import("@/views/location-select");
 const Vouchers = () => import("@/views/vouchers");
 const ForgotPassword = () => import("@/views/forgot-password");
 const CreateOrder = () => import("@/views/create-order");
+const OrderDetail = () => import("@/views/order-detail");
 const NotFound = () => import("@/components/NotFound.vue");
 
 Vue.use(Router);
@@ -78,6 +79,11 @@ function configRoutes() {
               name: "CreateOrder",
               beforeEnter: ifAuthenticated,
               component: CreateOrder,
+            },
+            {
+              path: ":id",
+              beforeEnter: ifAuthenticated,
+              component: OrderDetail,
             },
           ],
         },

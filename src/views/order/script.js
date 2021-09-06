@@ -9,6 +9,7 @@ export default {
   data() {
     return {
       riwayatPesanan: [],
+      status: [],
       isFullPage: true,
       isLoading: false,
       isEmpty: false,
@@ -27,9 +28,7 @@ export default {
       const params = {
         id: this.identity.userId,
       };
-      const url =
-        "https://fuex-service.herokuapp.com/order-detail/user/" +
-        `${this.identity.userId}`;
+      const url = "https://fuex-service.herokuapp.com/order-detail";
       try {
         const resp = await Axios({
           url: url,
@@ -47,9 +46,22 @@ export default {
       }
       this.isLoading = false;
     },
+    async handleGetStatusPesanan() {
+      const resp = await Axios({
+        url: "https://fuex-service.herokuapp.com/reference/order-status",
+        method: "GET",
+      });
+      console.log(resp);
+      if (resp.data.message === "SUCCESS") {
+        this.status = resp.data.content;
+      } else {
+        this.isEmpty = true;
+      }
+    },
   },
   mounted() {
     this.getIdentityFromSesion();
     this.handleGetDetailOrderUser();
+    this.handleGetStatusPesanan();
   },
 };

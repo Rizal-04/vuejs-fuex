@@ -51,7 +51,7 @@ export default {
             this.dataForm.email = "";
             this.dataForm.password = "";
             var convertToString = JSON.stringify(resp.data.content);
-            // window.location.reload();
+            window.location.reload();
             sessionStorage.setItem("User_Data_Login", convertToString);
             return;
           }, 1500);
