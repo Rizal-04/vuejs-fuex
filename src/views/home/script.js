@@ -50,7 +50,7 @@ export default {
     },
     konsultasibengkel() {
       window.open(
-        `https://api.whatsapp.com/send?phone=6288226430737&text=Saya%20Mau%20Konsultasi%20Nih%20Kak`
+        `https://api.whatsapp.com/send?phone=6289504731540&text=Saya%20Mau%20Konsultasi%20Nih%20Kak`
       );
     },
   },
