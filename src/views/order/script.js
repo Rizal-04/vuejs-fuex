@@ -19,6 +19,9 @@ export default {
     };
   },
   methods: {
+    orderDetail(val) {
+      this.$router.push("/order/" + val);
+    },
     getIdentityFromSesion() {
       var getIdentity = JSON.parse(sessionStorage.getItem("User_Data_Login"));
       this.identity.userId = getIdentity.userId;
@@ -28,7 +31,9 @@ export default {
       const params = {
         id: this.identity.userId,
       };
-      const url = "https://fuex-service.herokuapp.com/order-detail";
+      const url =
+        "https://fuex-service.herokuapp.com/order-detail/user/" +
+        this.identity.userId;
       try {
         const resp = await Axios({
           url: url,

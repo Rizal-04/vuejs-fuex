@@ -27,8 +27,8 @@
           </ul>
         </nav>
         <div class="copyright pull-right">
-          &copy; 2017, made with
-          <i class="fa fa-heart heart"></i> by Paper admin
+          &copy; 2021, made with
+          <i class="fa fa-heart heart"></i> by Fuex admin
         </div>
       </div>
     </footer>

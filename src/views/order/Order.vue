@@ -19,7 +19,8 @@
         <div v-for="orders in riwayatPesanan" :key="orders.id">
           <div
             class="card rounded-xl"
-            style="display: flex; width: 100%; justify-content: center; max-height: 220px; margin: 10px 0px; align-items: center; min-height: 180px; flex-direction: column;"
+            style="display: flex; width: 100%; justify-content: center; max-height: 220px; margin: 10px 0px; align-items: center; min-height: 180px; flex-direction: column; cursor: pointer;"
+            @click="orderDetail(orders.id)"
           >
             <div
               class="mb-5"
@@ -49,7 +50,20 @@
               style="font-size: 14px; display: flex; width: 95%; justify-content: space-between; align-items: center; max-height: 50px; flex-direction: row;"
             >
               <p>{{ orders.vehicleTypeId.tipeKendaraan }}</p>
-              <div>
+              <div
+                :class="[
+                  orders.orderStatusId.orderStatusId === 1
+                    ? 'bg-yellow-100 p-1 mt-1 text-yellow-500 text-sm'
+                    : orders.orderStatusId.orderStatusId === 2
+                    ? 'bg-indigo-100 p-1 mt-1 text-blue-500 text-sm'
+                    : orders.orderStatusId.orderStatusId === 3
+                    ? 'bg-green-100 p-1 mt-1 text-green-500 text-sm'
+                    : orders.orderStatusId.orderStatusId === 4
+                    ? 'bg-red-100 p-1 mt-1 text-red-500 text-sm'
+                    : 'p-5 mt-4',
+                ]"
+                class="flex justify-center"
+              >
                 <span>{{ orders.orderStatusId.orderStatusName }}</span>
               </div>
             </div>

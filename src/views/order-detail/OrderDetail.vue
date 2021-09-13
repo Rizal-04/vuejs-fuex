@@ -4,24 +4,27 @@
     style=" max-width: 450px; width: 100%"
   >
     <navbar navName="OrderDetail" />
-    <div class="pt-16 px-4">
+    <div class="pt-16 px-4" v-if="notError === true">
+      <b-loading :is-full-page="isFullPage" v-model="isLoading"></b-loading>
       <!-- <b-loading :is-full-page="isFullPage" v-model="isLoading"></b-loading> -->
       <p class="text-lg" style="font-size: 20px; color: #000">Identitas</p>
       <div class="pt-4 flex flex-col leading-10">
         <span class="font-medium">Atas Nama</span>
         <font style="background-color:  rgba(229, 231, 235);">
           <input
+            v-model="dataForm.nama"
             class="w-full b-none py-1  rounded-sm	"
-            style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px;"
-            placeholder="Nama Lengkap"
+            style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+            disabled
           />
         </font>
         <span class="font-medium">No Telp</span>
         <font style="background-color:  rgba(229, 231, 235);">
           <input
+            v-model="dataForm.notlp"
             class="w-full b-none py-1  rounded-sm	"
-            style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px;"
-            placeholder="No Telp Yang Dapat Di Hubungi"
+            style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+            disabled
           />
         </font>
         <span class="font-medium">Alamat</span>
@@ -34,22 +37,49 @@
                 class="w-4 h-6 ml-4"
               />
             </font>
-            <span class="saknjkdnfkjd"></span>
+            <span class="saknjkdnfkjd">{{ location }}</span>
           </div>
-          <p class="asjkadnnas">
-            ganti
+          <p class="asjkadnnas" @click="isComponentModalActive = true">
+            lihat
           </p>
         </div>
+        <b-modal
+          v-model="isComponentModalActive"
+          has-modal-card
+          trap-focus
+          :destroy-on-hide="false"
+          aria-role="dialog"
+          aria-label="Example Modal"
+          aria-modal
+        >
+          <div class="card">
+            <div class="card-content" style="max-width: 450px; width: 450px">
+              <div class="media">
+                <div class="media-content">
+                  <p class="title is-4">Alamat Lengkap</p>
+                </div>
+              </div>
+              <div class="content">
+                <p class="title is-6">
+                  {{ dataForm.alamat }}
+                </p>
+                <small>{{ date }}</small>
+              </div>
+            </div>
+          </div>
+        </b-modal>
         <div style="padding-top: 70px; color: black">
           <p style="font-size: 20px; color: black">Kendaraan</p>
           <p style="padding: 16px 0px 5px 0px; font-size: 16px;">
             Tipe Kendaraan
           </p>
           <div>
-            <select
-              style="background-color:  rgba(229, 231, 235); width: 100%; height: 40px; padding-left: 10px;"
-            >
-            </select>
+            <input
+              v-model="dataForm.vehicle"
+              class="w-full b-none py-1  rounded-sm	"
+              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+              disabled
+            />
           </div>
           <p style="font-size: 16px; padding-top: 8px;">
             Merek
@@ -57,8 +87,8 @@
           <font style="background-color:  rgba(229, 231, 235);">
             <input
               class="w-full b-none py-1  rounded-sm	"
-              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px;"
-              placeholder="*Contoh Supra X 150"
+              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+              v-model="dataForm.merk"
             />
           </font>
           <p style="font-size: 16px; padding-top: 8px;">
@@ -67,8 +97,8 @@
           <font style="background-color:  rgba(229, 231, 235);">
             <input
               class="w-full b-none py-1  rounded-sm	"
-              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px;"
-              placeholder="*Contoh H 81287 FX"
+              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+              v-model="dataForm.plat"
             />
           </font>
         </div>
@@ -77,40 +107,13 @@
           <p style="padding: 16px 0px 5px 0px; font-size: 16px;">
             Tipe Bahan Bakar
           </p>
-          <div>
-            <select
-              style="background-color:  rgba(229, 231, 235); width: 100%; height: 40px; padding-left: 10px;"
-            >
-            </select>
-          </div>
-          <p style="font-size: 16px; padding-top: 8px;">
-            Pembelian
-          </p>
-          <div class="akjdfnjndckj0129">
-            <div style="padding: 0px 20px 0px 0px; display: flex">
-              <input
-                class="py-1 mslasmclxska"
-                placeholder="Liter"
-                type="number"
-                step="0.01"
-                onkeypress="return event.charCode >= 48"
-                min="1"
-              />
-              <font class="py-1 mcoampMMP29328">
-                <p style="text-align: center; color: white; padding: 0px 5px;">
-                  <b>LITER</b>
-                </p>
-              </font>
-            </div>
-            <div style="padding: 0px 20px 0px 0px; display: flex">
-              <input class="py-1 mslasmclxska" placeholder="Rupiah" disabled />
-              <font class="py-1 mcoampMMP29328">
-                <p style="text-align: center; color: white; padding: 0px 5px;">
-                  <b>RUPIAH</b>
-                </p>
-              </font>
-            </div>
-          </div>
+          <font style="background-color:  rgba(229, 231, 235);">
+            <input
+              class="w-full b-none py-1  rounded-sm	"
+              style="border:none; outline:none; background-color:  rgba(229, 231, 235); padding:0px 0px 0px 10px; cursor: not-allowed"
+              v-model="dataForm.bbm"
+            />
+          </font>
         </div>
         <div class="nlaenifni3912">
           <p style="font-size: 18px;">Detail Pembayaran</p>
@@ -120,7 +123,8 @@
             </div>
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
-                Rp.
+                {{ ltr }} Liter / Rp.
+                {{ satu.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
@@ -132,6 +136,7 @@
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
                 Rp.
+                {{ billService.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
@@ -142,7 +147,7 @@
             </div>
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
-                Rp.
+                Rp. {{ promo.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
@@ -154,15 +159,35 @@
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
                 Rp.
+                {{ payTotal.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
               </p>
             </div>
           </div>
           <hr class="tebal mb-4" />
+          <div
+            :class="[
+              orderStatus === 1
+                ? 'bg-yellow-100 p-1 mt-1 text-yellow-500 text-sm'
+                : orderStatus === 2
+                ? 'bg-indigo-100 p-1 mt-1 text-blue-500 text-sm'
+                : orderStatus === 3
+                ? 'bg-green-100 p-1 mt-1 text-green-500 text-sm'
+                : orderStatus === 4
+                ? 'bg-red-100 p-1 mt-1 text-red-500 text-sm'
+                : 'p-5 mt-4',
+            ]"
+            class="flex justify-center mb-3 pt-2 text-lg"
+            style="height: 50px"
+          >
+            <span>{{ orderName }}</span>
+          </div>
           <b-button
             tabindex="0"
             type="button"
             class="mb-4"
             style="width: 100%; background-color: rgb(251, 0, 0); color: white; top: 0px"
+            v-if="orderBatal"
+            @click="batalkanPesanan"
           >
             <span>Batalkan Pesanan</span>
           </b-button>
@@ -175,6 +200,37 @@
         </div>
       </div>
       <br />
+    </div>
+    <div class="contact-us full-screen mt-9" v-if="notError === false">
+      <div class="wrapper wrapper-full-page section content">
+        <div class="">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-8 col-md-offset-2 text-center">
+                <h2 class="title text-danger">404 Not Found</h2>
+                <h2 class="title">
+                  Oops! {{ getLocation }} Page tidak tersedia.
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer-demo">
+        <div class="container">
+          <nav class="pull-left">
+            <ul>
+              <li>
+                <router-link to="/">Home</router-link>
+              </li>
+            </ul>
+          </nav>
+          <div class="copyright pull-right">
+            &copy; 2021, made with
+            <i class="fa fa-heart heart"></i> by Fuex admin
+          </div>
+        </div>
+      </footer>
     </div>
   </div>
 </template>

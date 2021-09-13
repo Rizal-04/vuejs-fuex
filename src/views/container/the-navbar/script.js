@@ -6,5 +6,9 @@ export default {
   props: {
     navName: "",
   },
-  methods: {},
+  methods: {
+    backHistory() {
+      window.history.back();
+    },
+  },
 };

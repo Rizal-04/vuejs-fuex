@@ -119,9 +119,11 @@ export default {
         ) {
           this.$buefy.toast.open({
             duration: 3000,
-            message: "Vocher is Out",
+            message: "Vocher Sudah Habis Di Gunakan",
             type: "is-danger",
           });
+          this.dataForm.vocherCode = "";
+          this.isLoading = false;
           return;
         }
         this.$buefy.toast.open({
@@ -194,7 +196,7 @@ export default {
             type: "is-success",
           });
           setTimeout(() => {
-            this.$router.push("/order/history");
+            this.$router.push("/order/" + res.data.content.id);
           }, 2000);
         }
         this.isLoading = false;
