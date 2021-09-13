@@ -123,8 +123,8 @@
             </div>
             <div style="width: 50%;">
               <p style="font-size: 18px; text-align: right;">
-                {{ ltr }} Liter / Rp.
-                {{ satu.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }}
+                {{ ltr }} L / Rp.
+                {{ satu.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,") }} L
               </p>
             </div>
           </div>
