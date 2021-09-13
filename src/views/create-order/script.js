@@ -149,7 +149,6 @@ export default {
         this.alamatLengkap === "" ||
         this.dataForm.brand === "" ||
         this.dataForm.platNumber === 0 ||
-        this.dataForm.vocherCode === "" ||
         this.jenisKendaraan === "" ||
         this.jenisBahanbakar === ""
       ) {
