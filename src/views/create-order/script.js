@@ -147,9 +147,11 @@ export default {
         this.dataForm.phoneNumber === "" ||
         this.dataForm.fullName === "" ||
         this.alamatLengkap === "" ||
+        this.dataForm.money === 0 ||
         this.dataForm.brand === "" ||
         this.dataForm.platNumber === 0 ||
         this.jenisKendaraan === "" ||
+        this.liter === 0 ||
         this.jenisBahanbakar === ""
       ) {
         alert("Form harus di isi semua");

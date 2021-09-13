@@ -8,7 +8,14 @@ export default {
   },
   methods: {
     backHistory() {
+      if (
+        this.$router.history.current.path === `/order/${this.$route.params.id}`
+      ) {
+        this.$router.push("/order/history");
+        return true;
+      }
       window.history.back();
+      return false;
     },
   },
 };

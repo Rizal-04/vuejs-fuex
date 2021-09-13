@@ -106,6 +106,7 @@ export default {
             type: "is-danger",
           });
         }
+        this.getRouter();
         this.isLoading = false;
       }
     },
