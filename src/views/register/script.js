@@ -55,7 +55,6 @@ export default {
             reqUrl: "checking-avalibility-user",
             headers: headers,
           });
-          // console.log(resp);
           if (resp.data.message === "SUCCESS") {
             setTimeout(() => {
               this.dataForm.implementsEmailUser = resp.data.content.email;
@@ -105,7 +104,6 @@ export default {
             reqUrl: "register",
             payload: payload,
           });
-          console.log(resp);
           if (resp.data.message === "SUCCESS") {
             this.$buefy.toast.open({
               duration: 2000,

@@ -33,11 +33,6 @@ export default {
       },
     };
   },
-  watch: {
-    router: function(v) {
-      console.log(v);
-    },
-  },
   methods: {
     locationGet(t, y) {
       this.location = t.slice(0, 37) + (t.length > 37 && y ? "..." : "");

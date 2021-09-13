@@ -23,7 +23,6 @@ export default {
           type: "GET_DATA",
           reqUrl: "order-detail/location-order/",
         });
-        console.log(resp);
         if (resp.data.message === "SUCCESS") {
           this.locationSelect = resp.data.content;
         } else {

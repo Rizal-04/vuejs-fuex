@@ -40,7 +40,6 @@ export default {
           method: "GET",
           params: params,
         });
-        console.log(resp);
         if (resp.data.message === "SUCCESS") {
           this.riwayatPesanan = resp.data.content;
         } else {
@@ -56,7 +55,6 @@ export default {
         url: "https://fuex-service.herokuapp.com/reference/order-status",
         method: "GET",
       });
-      console.log(resp);
       if (resp.data.message === "SUCCESS") {
         this.status = resp.data.content;
       } else {

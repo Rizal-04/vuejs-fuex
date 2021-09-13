@@ -66,7 +66,6 @@ export default {
           code: this.codeOtp,
         },
       });
-      console.log(this.codeOtp);
       if (res.data.message === "ERROR") {
         this.$buefy.toast.open({
           duration: 1500,

@@ -67,7 +67,6 @@ export default {
           type: "GET_DATA",
           reqUrl: "reference/vehicle-type",
         });
-        console.log(resp.data.content);
         if (resp.data.message === "SUCCESS") {
           this.vehicleType = resp.data.content;
         } else {
@@ -84,7 +83,6 @@ export default {
       var getAlamat = JSON.parse(sessionStorage.getItem("location_selected"));
       this.alamat = getAlamat.addressDetails + "\t" + getAlamat.selected;
       this.alamatLengkap = getAlamat.addressDetails + "\t" + getAlamat.selected;
-      console.log(getAlamat);
       this.locationGet(this.alamat, true);
     },
     changeLocation(t) {

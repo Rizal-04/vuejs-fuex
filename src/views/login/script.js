@@ -39,7 +39,6 @@ export default {
             password: this.dataForm.password,
           },
         });
-        console.log(resp.data);
         if (resp.data.message === "SUCCESS") {
           this.$buefy.toast.open({
             duration: 1000,
